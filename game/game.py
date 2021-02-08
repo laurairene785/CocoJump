@@ -1,9 +1,9 @@
 import pygame
 import sys
 from .config import *
-from .platform import Platform 
-from .player import Player 
-from .wall import Wall
+from .platform import *
+from .player import * 
+from .wall import *
 import random
 
 class Game :
