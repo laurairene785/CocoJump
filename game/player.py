@@ -14,6 +14,7 @@ class Player(pygame.sprite.Sprite):
         self.rect= self.image.get_rect()
         self.rect.left=left
         self.rect.bottom= bottom
+        self.playing = True
     
 
     def validate_platform(self, platform):
@@ -27,8 +28,9 @@ class Player(pygame.sprite.Sprite):
         self.pos_y+= self.vel_y+0.5*1.2
     
     def update(self):
-        self.update_pos()
-        self.rect.bottom = self.self.pos_y
+        if playing:
+            self.update_pos()
+            self.rect.bottom = self.self.pos_y
 
     def jump(self):
         if self.can_jump:
@@ -36,5 +38,10 @@ class Player(pygame.sprite.Sprite):
              self.can_jump= False
 
 
-
+    def collide_with(self, sprites):
+        objects = pygame.sprite.Sprite.collide(self, sprites, False)
+        if objects:
+            return objects[0]
     
+    def stop(self):
+        self.playing = False
